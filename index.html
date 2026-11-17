@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hansi Penikalapati · Portfolio</title>
+<title>Hansi Penikalapati</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
 <style>
@@ -129,7 +129,7 @@ footer{text-align:center;color:var(--sub);font-size:14px;padding:16px 0 36px}
       <a class="btn" href="https://github.com/">GitHub</a>
     </div>
   </div>
-  <div class="ph photo">I'll see you soon!</div>
+  <img class="photo" src="profilephoto.jpeg" alt="You'll see me soon!">
 </header>
 
 <section class="card two" id="about">
@@ -148,13 +148,13 @@ footer{text-align:center;color:var(--sub);font-size:14px;padding:16px 0 36px}
 
 <section class="card" id="experience">
   <h2>Experience &amp; education</h2>
-  <p class="lead">Jobs, internships, research, TA roles, clubs and hackathons. Use one line per result, with numbers where you have them.</p>
+  <p class="lead">Internships, research, and personal work</p>
   <ol class="tl" id="tl"></ol>
 </section>
 
 <section class="card" id="projects">
   <h2>Projects</h2>
-  <p class="lead">Your best three or four. For each: the problem, what you built, and a result.</p>
+  <p class="lead">Check out some of my project work:</p>
   <div class="grid" id="proj"></div>
 </section>
 
@@ -215,20 +215,43 @@ const STICKERS=[
 
 const skills={
   'Languages':['English','Telugu','Spanish','Korean'],
-  'Tools & frameworks':['Tool 1','Tool 2','Tool 3'],
-  'Also':['Skill 1','Skill 2','Skill 3']
+  'Software Tools':['ServiceNow', 'GitHub', 'LaTex', 'Excel', 'VS Code', 'PyCharm', 'IntelliJ', 'Eclipse'],
+  'Coding Languages':['Java', 'Python', 'C/C++', 'SQL', 'JavaScript', 'HTML/CSS'],
+  'Others':['Soldering','Design','Handcrafting']
 };
 
 const timeline=[
-  {when:'Month 2026 – now',title:'Role title · Organisation',bullets:['What you did and the result, with a number if you have one','A second accomplishment']},
-  {when:'Month 2025 – Month 2025',title:'Role title · Organisation',bullets:['What you did and the result']},
-  {when:'2024 – 2028',title:'B.S. Computer Science · University',bullets:['Relevant coursework: Course 1, Course 2, Course 3','Clubs, honours or awards']}
+  {when:'Jun 2026 – Oct 2026',title:'Technical Services & Operations Systems Engineering Intern · Ryder System, Inc.',bullets:[
+    'Built IT asset management dashboards in ServiceNow Platform Analytics, with manager and hierarchical views and a scripted cost-forecast calculator for budgeting IT assets',
+    'Created a request-task duration dashboard with process breakdowns to pinpoint bottlenecks',
+    'Built a UI portal with an embedded analytics dashboard so managers can track onboarding status for new employees']},
+  {when:'Aug 2025 – May 2029',title:'B.S. Statistics & Operations Research, minors in CS & ML · Carnegie Mellon University',bullets:[
+    'Coursework: Mathematical Concepts and Proofs, Matrices and Linear Transformations, Differential Equations, Computer Systems, Functional Programming',
+    'First place in estimation, CMU Jane Street Market Making Game · Fall 2025 Dean’s List',
+    'Clubs: Math Club, Quant Club, Lacrosse Club (social media head)']},
+  {when:'Jun 2024 – Jul 2024',title:'Research Assistant · Florida State University eHealth Lab',bullets:[
+    'Researched, in Dr. Zhe He’s lab, how different ChatGPT models could improve patient–doctor communication for people with chronic illnesses by analysing their lab test results',
+    'Focused on how well ChatGPT generates questions patients can ask their doctors to better understand their conditions']},
+  {when:'Jul 2022 – May 2025',title:'Private Tutor · Weston, FL',bullets:[
+    'Wrote custom worksheets and problem sets for each student’s needs',
+    'Brought students from C averages to A averages in Math, English and Physics']},
+  {when:'Aug 2021 – May 2025',title:'High School Diploma · Cypress Bay High School',bullets:[
+    'Ranked 1 of 1,260 · AIME qualifier · Boeing National Merit Scholar']}
 ];
 
 const projects=[
-  {title:'Project title',img:'',desc:'One or two sentences: the problem and what you built.',result:'Result: what it achieved or what you learned.',stack:['Tech 1','Tech 2'],code:'#',demo:'#'},
-  {title:'Project title',img:'',desc:'One or two sentences: the problem and what you built.',result:'Result: what it achieved or what you learned.',stack:['Tech 1','Tech 2'],code:'#',demo:'#'},
-  {title:'Project title',img:'',desc:'One or two sentences: the problem and what you built.',result:'Result: what it achieved or what you learned.',stack:['Tech 1','Tech 2'],code:'#',demo:'#'}
+  {title:'Fabric Composition Inspector',status:'Live, Maintaining',date:'Jul 2026 – now',img:'',
+   desc:'A Chrome extension that reads retailers’ product data and shows a text overlay with the material makeup of whatever item your cursor is on.',
+   result:'Makes clothes shopping easier for people with textile allergies or sensory issues, or anyone trying to shop sustainably.',
+   stack:['JavaScript','CSS','JSON'],view:'',download:'https://chromewebstore.google.com/detail/fabric-composition-inspec/dmjpappmnlcnndngkehcajliinmjfmjo?authuser=0&hl=en&pli=1'},
+  {title:'GenerEat',status:'In progress',date:'November 2026 – now',img:'',
+   desc:'A recipe app that learns your tastes and tracks your nutritional intake to help you narrow down what to make and eat.',
+   result:'Add your own recipes or import them from the web, and sort them into folders by mood, cuisine, flavor or anything you like.',
+   stack:[],view:'',download:''},
+  {title:'Rushi Gardens Produce Website',status:'Live',date:'Jul 2026',img:'',
+   desc:'An ordering site for my family’s farm: customers order fresh produce by the pound or by the item and get a receipt.',
+   result:'Gives the seller full control to customise products and listings.',
+   stack:['HTML','CSS','JavaScript'],view:'https://rushigardens.com/',download:''}
 ];
 
 const art=[
@@ -258,7 +281,7 @@ $('#skills').innerHTML=Object.entries(skills).map(([g,l])=>`<div class="sk"><h3>
 $('#tl').innerHTML=timeline.map(t=>`<li><span class="when">${esc(t.when)}</span><div><h3>${esc(t.title)}</h3><ul>${t.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div></li>`).join('');
 
 $('#proj').innerHTML=projects.map(p=>`<article class="proj">${pic(p.img,'shot','Project screenshot')}<h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><p class="res">${esc(p.result)}</p>
-<ul class="tags">${p.stack.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><div class="links"><a href="${esc(p.code)}">Code</a><a href="${esc(p.demo)}">Live demo</a></div></article>`).join('');
+<ul class="tags">${p.stack.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><div class="links"><a href="${esc(p.view)}">View</a><a href="${esc(p.download)}">Download</a></div></article>`).join('');
 
 $('#gal').innerHTML=art.map((a,i)=>`<button class="piece" data-i="${i}">${pic(a.img,'im','Artwork image')}<b>${esc(a.title)}</b><small>${esc(a.medium)} · ${esc(a.year)}</small></button>`).join('');
 const dlg=$('#dlg');
