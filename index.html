@@ -15,15 +15,19 @@ COLOUR and TYPE: white ground, near-black ink, one blue accent; Archivo througho
 LAYOUT: sticky nav, hero card, then cards for about/skills, experience, projects, art, posts, contact.
 */
 
-/* ===== SWAP YOUR BACKGROUND HERE =====
-   Replace the url(...) below with your vision-board image, e.g. url("images/background.png").
-   Right now it is a plain white image. */
-:root{--bg-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Crect width='8' height='8' fill='%23ffffff'/%3E%3C/svg%3E");
---ink:#141414;--sub:#5a5a5a;--line:#e6e6e6;--acc:#2340ff;--accsoft:#eef0ff;--card:#ffffffee;color-scheme:light}
+/* Background: plain white. Your cutouts are set in the STICKERS list in the script at the bottom. */
+:root{--ink:#141414;--sub:#5a5a5a;--line:#e6e6e6;--acc:#2340ff;--accsoft:#eef0ff;--card:#ffffffee;color-scheme:light}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{margin:0;color:var(--ink);font:16px/1.6 Archivo,system-ui,sans-serif;overflow-x:clip;
-background:#fff var(--bg-img) center/cover fixed}
+body{margin:0;color:var(--ink);font:16px/1.6 Archivo,system-ui,sans-serif;overflow-x:clip;background:#fff;position:relative}
+/* sticker layer: sits behind the cards, scattered in the margins */
+.stickers{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.stk{position:absolute;width:calc(var(--w)*1px);transform:translateY(-50%) rotate(var(--r));filter:drop-shadow(0 8px 10px #0002)}
+.stk img{display:block;width:100%;height:auto}
+.stk .ph{aspect-ratio:var(--ar,1);border-radius:16px;background:#fafafaee;font-size:13px}
+.wrap{position:relative;z-index:1}
+@media(max-width:1199px){.stk{width:calc(var(--w)*.7px)}}
+@media(max-width:700px){.stk{width:calc(var(--w)*.5px)}.stk:not(.phone){display:none}}
 a{color:var(--acc)}
 h1,h2,h3{font-weight:900;line-height:1.05;text-wrap:balance;margin:0}
 h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;margin-bottom:6px}
@@ -112,6 +116,7 @@ footer{text-align:center;color:var(--sub);font-size:14px;padding:16px 0 36px}
 </style>
 </head>
 <body>
+<div class="stickers" id="stickers" aria-hidden="true"></div>
 <div class="wrap">
 <nav aria-label="Main"><div class="bar">
   <b>Your Name</b>
@@ -191,6 +196,28 @@ footer{text-align:center;color:var(--sub);font-size:14px;padding:16px 0 36px}
    Fill in the fields below. For images, put a path like "images/proj1.png" in img.
    Leave img empty ("") to show a placeholder box. Links: replace "#" with real URLs. */
 
+/* STICKERS: your cutouts. Save each as a PNG with a transparent background.
+   img:    path to the image, e.g. "images/cutout-star.png" (leave "" to show a placeholder)
+   side:   "left" or "right" edge of the screen
+   top:    how far down the page, as a percent (0 = very top, 100 = very bottom)
+   edge:   distance from that edge, in % of screen width (negative = peeks off the edge)
+   size:   width in pixels on a large screen (shrinks to 70% on tablets, 50% on phones)
+   tilt:   rotation in degrees
+   ratio:  placeholder shape only (width / height); ignored once you add an image
+   phone:  true = also show on phones (keep it to 2–4 so the content stays clear)
+   Add, remove or move entries freely. */
+const STICKERS=[
+  {img:'',side:'left', top:4, edge:2, size:170,tilt:-8, ratio:1,   phone:true},
+  {img:'',side:'right',top:6, edge:3, size:150,tilt:10, ratio:.8,  phone:true},
+  {img:'',side:'left', top:22,edge:1, size:130,tilt:6,  ratio:1.2, phone:false},
+  {img:'',side:'right',top:30,edge:-1,size:180,tilt:-5, ratio:1,   phone:false},
+  {img:'',side:'left', top:45,edge:3, size:150,tilt:-12,ratio:.75, phone:false},
+  {img:'',side:'right',top:58,edge:2, size:140,tilt:7,  ratio:1,   phone:false},
+  {img:'',side:'left', top:72,edge:0, size:170,tilt:4,  ratio:1.3, phone:false},
+  {img:'',side:'right',top:86,edge:3, size:160,tilt:-9, ratio:.9,  phone:false},
+  {img:'',side:'left', top:96,edge:4, size:140,tilt:9,  ratio:1,   phone:true}
+];
+
 const skills={
   'Languages':['Language 1','Language 2','Language 3','Language 4'],
   'Tools & frameworks':['Tool 1','Tool 2','Tool 3'],
@@ -228,6 +255,8 @@ const posts=[
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const pic=(src,cls,label)=>src?`<img class="${cls}" src="${esc(src)}" alt="${esc(label)}">`:`<div class="ph ${cls}">${esc(label)}</div>`;
+
+$('#stickers').innerHTML=STICKERS.map((s,i)=>`<div class="stk${s.phone?' phone':''}" style="${s.side=='right'?'right':'left'}:${s.edge}%;top:${s.top}%;--w:${s.size};--r:${s.tilt}deg;--ar:${s.ratio}">${s.img?`<img src="${esc(s.img)}" alt="">`:`<div class="ph">Cutout ${i+1}</div>`}</div>`).join('');
 
 $('#skills').innerHTML=Object.entries(skills).map(([g,l])=>`<div class="sk"><h3>${esc(g)}</h3><ul class="tags">${l.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>`).join('');
 
