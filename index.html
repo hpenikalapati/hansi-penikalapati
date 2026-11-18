@@ -6,14 +6,14 @@
 <title>Hansi Penikalapati</title>
   <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel:wght@400;600;700;800&family=PT+Serif:wght@400;700&display=swap">
 <style>
 
 /* Background: plain white. Your cutouts are set in the STICKERS list in the script at the bottom. */
 :root{--ink:#141414;--sub:#5a5a5a;--line:#e6e6e6;--acc:#79D779;--accsoft:#D4F2D4;--card:#ffffffee;color-scheme:light}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{margin:0;color:var(--ink);font:16px/1.6 Archivo,system-ui,sans-serif;overflow-x:clip;background:#fff;position:relative}
+body{margin:0;color:var(--ink);font:16px/1.7 Martel,Georgia,serif;overflow-x:clip;background:#fff;position:relative}
 /* sticker layer: sits behind the cards, scattered in the margins */
 .stickers{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .stk{position:absolute;width:calc(var(--w)*1px);transform:translateY(-50%) rotate(var(--r));filter:drop-shadow(0 8px 10px #0002)}
@@ -23,9 +23,9 @@ body{margin:0;color:var(--ink);font:16px/1.6 Archivo,system-ui,sans-serif;overfl
 @media(max-width:1199px){.stk{width:calc(var(--w)*.7px)}}
 @media(max-width:700px){.stk{width:calc(var(--w)*.5px)}.stk:not(.phone){display:none}}
 a{color:var(--acc)}
-h1,h2,h3{font-weight:900;line-height:1.05;text-wrap:balance;margin:0}
-h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;margin-bottom:6px}
-h3{font-size:19px;font-weight:800}
+h1,h2,h3{font-family:'PT Serif',Georgia,serif;font-weight:700;line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.01em;margin-bottom:6px}
+h3{font-size:19px;font-weight:700}
 .wrap{max-width:1120px;margin:0 auto;padding:0 max(4vw,14px)}
 .card{background:#fff;padding:clamp(28px,4vw,48px) clamp(20px,3.5vw,40px);margin:0}
 .lead{max-width:64ch;color:var(--sub);font-size:17px;margin:0 0 22px}
@@ -41,7 +41,7 @@ nav a:hover{color:var(--acc)}
 nav .cta{font-weight:800;text-decoration:underline;text-underline-offset:4px}
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;margin-top:32px}
-.hero h1{font-size:clamp(42px,7vw,76px);letter-spacing:-.03em}
+.hero h1{font-size:clamp(42px,7vw,76px);letter-spacing:-.01em}
 .hero .role{font-size:clamp(18px,2.2vw,22px);font-weight:700;margin:14px 0 10px}
 .hero p{color:var(--sub);font-size:17px;max-width:56ch;margin:0 0 24px}
 .photo{aspect-ratio:1;border-radius:50%;max-width:300px;width:100%;justify-self:center}
@@ -83,7 +83,7 @@ dialog::backdrop{background:#000a}
 dialog .dv{padding:16px}
 dialog .im{width:100%;aspect-ratio:4/5;object-fit:contain;display:block}
 dialog .row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px}
-dialog button,.chip{min-height:44px;padding:0 18px;border-radius:999px;font:700 15px Archivo,sans-serif;cursor:pointer}
+dialog button,.chip{min-height:44px;padding:0 18px;border-radius:999px;font:700 15px Martel,Georgia,serif;cursor:pointer}
 dialog button{border:2px solid var(--ink);background:var(--ink);color:#fff}
 /* posts */
 .hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px;margin-bottom:8px}
