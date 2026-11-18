@@ -298,7 +298,7 @@ $('#skills').innerHTML=Object.entries(skills).map(([g,l])=>`<div class="sk"><h3>
 $('#tl').innerHTML=timeline.map(t=>`<li><span class="when">${esc(t.when)}</span><div><h3>${esc(t.title)}</h3><ul>${t.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div></li>`).join('');
 
 $('#proj').innerHTML=projects.map(p=>`<article class="proj">${pic(p.img,'shot','Project screenshot')}<h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><p class="res">${esc(p.result)}</p>
-<ul class="tags">${p.stack.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><div class="links"><a href="${esc(p.view)}">View</a><a href="${esc(p.download)}">Download</a></div></article>`).join('');
+<ul class="tags">${p.stack.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><div class="links">${p.view?`<a href="${esc(p.view)}">View</a>`:''}${p.download?`<a href="${esc(p.download)}">Download</a>`:''}.join('');
 
 $('#gal').innerHTML=art.map((a,i)=>`<button class="piece" data-i="${i}">${pic(a.img,'im','Artwork image')}<b>${esc(a.title)}</b><small>${esc(a.medium)} · ${esc(a.year)}</small></button>`).join('');
 const dlg=$('#dlg');
