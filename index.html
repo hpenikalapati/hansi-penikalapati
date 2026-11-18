@@ -25,9 +25,9 @@ a{color:var(--acc)}
 h1,h2,h3{font-weight:900;line-height:1.05;text-wrap:balance;margin:0}
 h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;margin-bottom:6px}
 h3{font-size:19px;font-weight:800}
-.wrap{max-width:1400px;margin:0 auto;padding:0 max(4vw,14px)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 max(4vw,14px)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3.5vw,40px);margin:22px 0;box-shadow:0 18px 40px -28px #0004;backdrop-filter:blur(2px)}
-.lead{color:var(--sub);font-size:17px;margin:0 0 22px}
+.lead{max-width:64ch;color:var(--sub);font-size:17px;margin:0 0 22px}
 :focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 .ph{display:grid;place-items:center;text-align:center;border:2px dashed #c9c9c9;border-radius:12px;background:#fafafa;color:#888;font-size:14px;padding:12px}
 .ph-note{font-size:13px;color:#888;margin-top:14px}
@@ -59,7 +59,7 @@ nav .cta:hover{color:#fff;background:var(--acc)}
 .tags li{font-size:14px;padding:4px 12px;border-radius:999px;background:var(--accsoft);color:#98E198;font-weight:500}
 /* timeline */
 .tl{list-style:none;margin:0;padding:0}
-.tl li{display:grid;grid-template-columns:9.5em minmax(0,1fr);gap:4px 24px;padding:18px 0;border-top:1px solid var(--line)}
+.tl>li{display:grid;grid-template-columns:11em minmax(0,1fr);gap:4px 24px;padding:18px 0;border-top:1px solid var(--line)}
 .tl .when{color:var(--sub);font-weight:600;white-space:nowrap}
 .tl p{margin:4px 0 0;color:var(--sub)}
 .tl ul{margin:6px 0 0;padding-left:18px;color:var(--sub)}
@@ -104,7 +104,7 @@ dialog button{border:2px solid var(--ink);background:var(--ink);color:#fff}
 .cl{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:22px;font-weight:700}
 footer{text-align:center;color:var(--sub);font-size:14px;padding:16px 0 36px}
 @media(max-width:820px){.hero,.two{grid-template-columns:minmax(0,1fr)}.photo{max-width:200px;order:-1;justify-self:start}}
-@media(max-width:600px){nav .bar{border-radius:18px}nav b{width:100%}.tl li{grid-template-columns:minmax(0,1fr)}.post{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){nav .bar{border-radius:18px}nav b{width:100%}.tl>li{grid-template-columns:minmax(0,1fr)}.post{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.piece,.btn{transition:none}}
 </style>
 </head>
@@ -201,16 +201,32 @@ footer{text-align:center;color:var(--sub);font-size:14px;padding:16px 0 36px}
    ratio:  placeholder shape only (width / height); ignored once you add an image
    phone:  true = also show on phones (keep it to 2–4 so the content stays clear)
    Add, remove or move entries freely. */
+
 const STICKERS=[
-  {img:'thinking smiski.png',side:'left', top:4, edge:2, size:170,tilt:-8, ratio:1,   phone:true},
-  {img:'lego flowers.png',side:'right',top:6, edge:3, size:150,tilt:10, ratio:.8,  phone:true},
-  {img:'sparkle cluster.png',side:'left', top:22,edge:1, size:130,tilt:6,  ratio:1.2, phone:false},
-  {img:'cinamon roll.png',side:'right',top:30,edge:-1,size:180,tilt:-5, ratio:1,   phone:false},
-  {img:'rubber duck.png',side:'left', top:45,edge:3, size:150,tilt:-12,ratio:.75, phone:false},
-  {img:'ppulbatu dalgonyang.png',side:'right',top:58,edge:2, size:140,tilt:7,  ratio:1,   phone:false},
-  {img:'kuromi.png',side:'left', top:72,edge:0, size:170,tilt:4,  ratio:1.3, phone:false},
-  {img:'sparkle cluster.png',side:'right',top:86,edge:3, size:160,tilt:-9, ratio:.9,  phone:false},
-  {img:'luigi hot wheels.png',side:'left', top:96,edge:4, size:140,tilt:9,  ratio:1,   phone:true}
+  {img:'thinking smiski.png',side:'left', top:3, edge:1, size:140,tilt:-8, ratio:1,phone:true},
+  {img:'lego flowers.png',side:'right',top:4, edge:2, size:120,tilt:9,  ratio:1,phone:true},
+  {img:'sparkle cluster.png',side:'left', top:10,edge:4, size:95, tilt:14, ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'right',top:12,edge:-1,size:150,tilt:-6, ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'left', top:17,edge:-1,size:130,tilt:5,  ratio:1,phone:false},
+  {img:'cinamon roll.png',side:'right',top:20,edge:4, size:100,tilt:-12,ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'left', top:25,edge:3, size:115,tilt:-10,ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'right',top:28,edge:1, size:135,tilt:7,  ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'left', top:33,edge:0, size:150,tilt:3,  ratio:1,phone:false},
+  {img:'kuromi.png',side:'right',top:37,edge:3, size:110,tilt:-4, ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'left', top:41,edge:4, size:100,tilt:11, ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'right',top:45,edge:-1,size:145,tilt:6,  ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'left', top:50,edge:1, size:135,tilt:-7, ratio:1,phone:false},
+  {img:'luigi hot wheels.png',side:'right',top:54,edge:3, size:105,tilt:-11,ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'left', top:58,edge:4, size:95, tilt:8,  ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'right',top:62,edge:1, size:140,tilt:4,  ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'left', top:67,edge:-1,size:145,tilt:-5, ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'right',top:71,edge:4, size:100,tilt:12, ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'left', top:75,edge:3, size:115,tilt:6,  ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'right',top:79,edge:0, size:150,tilt:-8, ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'left', top:84,edge:1, size:130,tilt:-12,ratio:1,phone:false},
+  {img:'sparkle cluster.png',side:'right',top:88,edge:3, size:110,tilt:5,  ratio:1,phone:false},
+  {img:'ppulbatu dalgonyang.png',side:'left', top:93,edge:4, size:100,tilt:9,  ratio:1,phone:true},
+  {img:'rubber duck.png',side:'right',top:96,edge:1, size:135,tilt:-6, ratio:1,phone:true}
 ];
 
 const skills={
